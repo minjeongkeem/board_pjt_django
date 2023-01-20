@@ -14,8 +14,8 @@
         <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
         <li><a href="{% url 'board:board_create' %}">New Article</a></li>
         <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-        <li></li>
+        <li><a href="{% url 'accounts:profile' request.user.username %}">{{request.user.username}}님의 my page</a></li>
     </ul>
-    
+    {% block content %}{% endblock content %}
 </body>
 </html>
