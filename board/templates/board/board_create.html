@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>hi</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <textarea name="text" id="text" cols="30" rows="10">내용 작성</textarea>
+    <button>제출</button>
+</form>
+
+
+
+
+{% endblock content %}

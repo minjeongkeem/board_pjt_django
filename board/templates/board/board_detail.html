@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ article.name }}</h1>
+<h1>{{ article.content }}</h1>
+
+<p> 
+      
+        ( {{ Content.user.Language }} )
+</p>
+{% if request.user == content.user %}
+<div>
+    <a href="{% url 'board:board_detail' article.pk %}">
+        <button>수정</button>
+    </a>
+</div>
+<div>
+    <form action="{% url 'board:board_delete' article.pk %}" method="POST">
+        {% csrf_token %}
+        <button>삭제</button>
+    </form>
+</div>
+{% endif %}
+<hr>
+{% if request.user.is_authenticated %}
+<form action="{% url 'board:board_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button>Reply!</button>
+</form>
+{% endif %}
+{% comment %} 좋아요 {% endcomment %}
+<ul>
+    {% for like in comment.like_set.all %}
+    <li>
+         {% if request.user != reply.user %}
+        <form action="{% url 'board:like' comment.pk user.pk %}" 
+              method="POST"
+              style="display: inline-block;">
+            {% csrf_token %}
+            <button>-1</button>
+            <button>+1</button>
+        </form>
+        {% else %}
+        <form action="{% url 'board:board_delete' article.pk comment.pk %}"
+              method="POST"
+              style="display: inline-block;">
+            {% csrf_token %}
+            <button>삭제</button>
+        </form>
+        {% endif %}
+
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
