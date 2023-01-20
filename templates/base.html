@@ -7,22 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    {% block content %}
-<ul>
-    <li>
-        <a href="{% url 'board:board_index' %}">First Page</a>
-    </li>
-    <li>
-        <a href="{% url 'board:board_create' %}">New</a>
-    </li>
-        <a href="{% url 'board:board_profile' %}">Profile</a>
-</ul>
-    
-    
-
-    
-    
-    
-    {% endblock content %}
+    <ul>
+        <li><a href="{% url 'board:board_index' %}">Home</a></li>
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+        <li><a href="{% url 'board:board_create' %}">New Article</a></li>
+        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        <li><a href="{% url 'accounts:profile' request.user.username %}">{{request.user.username}}님의 my page</a></li>
+    </ul>
+    {% block content %}{% endblock content %}
 </body>
 </html>
