@@ -11,11 +11,13 @@ from . models import Article, Comment
 
 @require_safe
 def board_index(request):
-    pass
+    articles = Article.objects.all()
+    context = {'articles': articles}
+    return render(request, 'board/board_index.html', context)
 
 
 def board_detail(request):
-    
+    content = Comment.objects.all()
     pass
 
 def board_create(request):
