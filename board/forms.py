@@ -7,3 +7,6 @@ class ContentForm(forms.ModelForm):
         model = Content
         fields = ('content',)
 
+
+class PersonForm(forms.ModelForm):
+    pass

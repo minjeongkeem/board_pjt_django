@@ -1,15 +1,17 @@
 from django.db import models
-
+from  django.conf import settings
 # Create your models here.
 
-class Person(models.Model):
+class Article(models.Model):
     name = models.CharField(max_length=10)
-    age = models.IntegerField(max_length=100)
+    Language = models.CharField(max_length=10,)
+    content = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
-class Content(models.Model):
+class Comment(models.Model):
     name = models.CharField(max_length=10)
-    use_language = models.CharField(max_length=20)
-    
+    content = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     
