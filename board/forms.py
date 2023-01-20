@@ -1,12 +1,15 @@
 from django import forms
-from .models import Content, Person
+from .models import Comment, Article
 
-class ContentForm(forms.ModelForm):
+class Article(forms.ModelForm):
+
     content = forms.CharField(min_length=30, max_length=300)
     class Meta:
-        model = Content
-        fields = ('content',)
+        model = Article
+        fields = ('name', 'content', )
 
 
 class PersonForm(forms.ModelForm):
-    pass
+    class Meta:
+        model = Comment
+        fields = ('content',)

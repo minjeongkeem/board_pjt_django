@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden
 from django.views.decorators.http import (require_http_methods, require_safe, require_POST)
 
 from django.contrib.auth.decorators import login_required
-from .models import Content
+from . models import Article, Comment
 
 
 # Create your views here.
@@ -11,13 +11,11 @@ from .models import Content
 
 @require_safe
 def board_index(request):
-    contents = Content.objects.all()
-    context = {'contents': contents}
-    return render(request, 'board/board_index.html', context)
+    pass
 
 
 def board_detail(request):
-    content = Content.objects.all()
+    
     pass
 
 def board_create(request):
