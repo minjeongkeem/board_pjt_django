@@ -4,12 +4,14 @@
 <h1>Main Page</h1>
 <ul>
   <li>
-      <a href="board:board_detail">home</a>
+    {% for article in articles %}
+        <li>
+            <a href="{% url 'board:board_detail' article.pk %}">{{ article.title }}</a>
+    {% endfor %}
+   
   </li>
-
+  
 </ul>
-
-
 
 
 {% endblock content %}
